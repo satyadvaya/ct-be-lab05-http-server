@@ -11,4 +11,13 @@ describe('HTTP routes', () => {
 
         expect(response.text).toEqual(index);
     });
+
+    it('should return main.css from GET /css/main.css', async () => {
+        const [response, index] = await Promise.all([
+            request(app).get('/css/main.css'),
+            readFile('./public/css/main.css', 'utf-8'),
+        ]);
+
+        expect(response.text).toEqual(index);
+    });
 });
